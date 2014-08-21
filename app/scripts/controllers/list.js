@@ -10,10 +10,10 @@
 angular.module('angularLetusgoApp')
   .controller('ListCtrl', function ($scope) {
     $scope.products = loadAllProducts();
-   // $scope.Count = $scope.$parent.totalCount;
+
     $scope.add2Cart = function(product){
         $scope.$parent.totalCount++;
-        $scope.$parent.cart.len++;
+        $scope.$parent.addCount();
         var isOk = updateCount($scope.$parent.cart,product);
         if(isOk){
             $scope.$parent.cart.cartItems.push(new CartItem(product,1));

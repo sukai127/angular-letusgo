@@ -19,7 +19,7 @@
                     <div class='col-md-4'>
                         <div class='form-inline form-group'>
                             <input type='number' class='form-control number' name='number'
-                                   ng-change='updateCount(item)' ng-value={{item.count}}>
+                                   ng-change='updateCount(item)' ng-model='item.count'>
                         </div>
                     </div>
                     <div class='col-md-2'>${{item.product.price.toFixed(2)}}</div>
@@ -27,7 +27,7 @@
                     </div>
                     <div class='col-md-2'>
                         <a href='#/cart'>
-                            <span class='glyphicon glyphicon-remove text-danger delete'ng-click="deleteItem(item)"></span>
+                            <span class='glyphicon glyphicon-remove text-danger delete'ng-click="deleteItem($index)"></span>
                         </a>
                     </div>
                 </div>

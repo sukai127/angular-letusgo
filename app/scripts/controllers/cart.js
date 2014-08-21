@@ -14,7 +14,10 @@ angular.module('angularLetusgoApp')
         $scope.updateCount = function(cartitem){
             console.log(cartitem);
         }
-        $scope.deleteItem = function(cartitem){
+        $scope.deleteItem = function(index){
+            $scope.$parent.cart.cartItems.splice(index,1);
+            Util.storage.add2Storage('cart',$scope.$parent.cart);
+            $scope.$parent.totalCount = $scope.$parent.getTotalCount();
             return false;
         }
     });
