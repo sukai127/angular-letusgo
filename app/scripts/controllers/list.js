@@ -10,7 +10,7 @@
 angular.module('angularLetusgoApp')
   .controller('ListCtrl', function ($scope) {
     $scope.products = loadAllProducts();
-
+    $scope.$parent.highLight('active_list');
     $scope.add2Cart = function(product){
         $scope.$parent.totalCount++;
         $scope.$parent.addCount();

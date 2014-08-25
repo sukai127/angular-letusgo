@@ -6,16 +6,11 @@ angular
     .module('angularLetusgoApp')
     .controller('IndexCtrl',function($scope){
         $scope.cart = Util.storage.getStorageItem('cart') || new Cart(null);
-//        if(!$scope.cart){
-//            $scope.cart = new Cart(null);
-//        }
 
         $scope.totalCount = $scope.cart.len;
 
         $scope.addCount = function(){
-            if(!$scope.cart){
-                $scope.cart = new Cart(null);
-            }
+            $scope.cart = Util.storage.getStorageItem('cart') || new Cart(null);
             $scope.cart.len++;
             Util.storage.getStorageItem('cart',$scope.cart);
         };
@@ -36,5 +31,26 @@ angular
             });
             return sum;
         };
+
+        $scope.changeCount = function(){
+            $scope.cart = Util.storage.getStorageItem('cart') || new Cart(null);
+            $scope.cart.len++;
+            Util.storage.getStorageItem('cart',$scope.cart);
+        };
+
+        $scope.active_index = true;
+        $scope.active_list = false;
+        $scope.active_cart = false;
+
+        $scope.highLight = function(highLightItem){
+            var allItems = ['active_index','active_list','active_cart'];
+            _.forEach(allItems,function(item){
+               if(highLightItem === item){
+                   eval('$scope.' + item + " = true");
+               } else{
+                   eval('$scope.' + item + " = false");
+               }
+            });
+        }
 
     })

@@ -16,9 +16,9 @@
         <div class="panel panel-title">
             <div class="panel-body">
                 <ul class="nav nav-pills" role="tablist">
-                    <li role="presentation" class="active"><a href="#">Let's go Shop</a></li>
-                    <li role="presentation"><a href="#/list">Product list</a></li>
-                    <li role="presentation">
+                    <li role="presentation" ng-class="{active : active_index}"><a href="#">Let's go Shop</a></li>
+                    <li role="presentation" ng-class="{active : active_list}"><a href="#/list">Product list</a></li>
+                    <li role="presentation" ng-class="{active : active_cart}">
                         <a href="#/cart"><span class="glyphicon glyphicon-shopping-cart" id="cart">Cart({{totalCount || 0}})</span></a>
                     </li>
                 </ul>
