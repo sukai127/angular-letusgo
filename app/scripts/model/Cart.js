@@ -11,19 +11,4 @@ function Cart(cart){
     }
 
 }
-Cart.prototype.getCount = function(){
-    var sum =0;
-    _.forEach(this.cartItems,function(cartitem){
-        sum += cartitem.count;
-    });
-    return sum;
-};
 
-Cart.prototype.getTotalMoney = function(){
-    var sum = 0;
-    _.forEach(this.cartItems,function(cartitem){
-        var item = new CartItem(cartitem.product,cartitem.count);
-        sum += item.getCount() * item.getPrice();
-    });
-    return sum;
-};

@@ -4,14 +4,14 @@
  */
 angular
     .module('angularLetusgoApp')
-    .controller('IndexCtrl',function($scope){
-        $scope.cart = Util.storage.getStorageItem('cart') || new Cart(null);
+    .controller('IndexCtrl',function($scope,CartService){
+        $scope.cart = Util.storage.getStorageItem('cart') || CartService.create(null);
 
         $scope.totalCount = $scope.cart.len;
-
         $scope.addCount = function(){
-            $scope.cart = Util.storage.getStorageItem('cart') || new Cart(null);
+            $scope.cart = Util.storage.getStorageItem('cart') || CartService.create(null);
             $scope.cart.len++;
+            $scope.totalCount++;
             Util.storage.getStorageItem('cart',$scope.cart);
         };
         $scope.getTotalCount = function(){
@@ -33,7 +33,7 @@ angular
         };
 
         $scope.changeCount = function(){
-            $scope.cart = Util.storage.getStorageItem('cart') || new Cart(null);
+            $scope.cart = Util.storage.getStorageItem('cart') || CartService.create(null);
             $scope.cart.len++;
             Util.storage.getStorageItem('cart',$scope.cart);
         };

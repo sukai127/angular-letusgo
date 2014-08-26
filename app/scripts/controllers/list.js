@@ -8,15 +8,14 @@
  * Controller of the angularLetusgoApp
  */
 angular.module('angularLetusgoApp')
-  .controller('ListCtrl', function ($scope) {
+  .controller('ListCtrl', function ($scope,CartItemService) {
     $scope.products = loadAllProducts();
     $scope.$parent.highLight('active_list');
     $scope.add2Cart = function(product){
-        $scope.$parent.totalCount++;
         $scope.$parent.addCount();
         var isOk = updateCount($scope.$parent.cart,product);
         if(isOk){
-            $scope.$parent.cart.cartItems.push(new CartItem(product,1));
+            $scope.$parent.cart.cartItems.push(CartItemService.create(product,1));
         }
         Util.storage.add2Storage('cart',$scope.$parent.cart);
     }

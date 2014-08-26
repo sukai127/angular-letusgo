@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('angularLetusgoApp')
-    .controller('CartCtrl', function ($scope) {
-        $scope.cartItems = new Cart($scope.$parent.cart).cartItems;
+    .controller('CartCtrl', function ($scope,CartService) {
+        $scope.cartItems = CartService.create($scope.$parent.cart).cartItems;
         $scope.$parent.highLight('active_cart');
         $scope.flag = $scope.cartItems.length ===0;
         $scope.updateCount = function(){
