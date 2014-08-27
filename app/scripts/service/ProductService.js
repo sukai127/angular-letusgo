@@ -1,5 +1,5 @@
 angular.module('angularLetusgoApp')
-    .service('ProductService',function(CartItemService){
+    .service('ProductService',function(CartItemService,localStorageService){
         this.create = function(name,unit,category,price){
             return {name : name, unit : unit, category : category, price : price};
         };
@@ -23,9 +23,9 @@ angular.module('angularLetusgoApp')
                 });
                 return flag;
             };
-            if(isOk){
+            if(isOk(cart,product)){
                 cart.cartItems.push(CartItemService.create(product,1));
             }
-            Util.storage.add2Storage('cart',cart);
+            localStorageService.add('cart',cart);
         };
     });
