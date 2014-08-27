@@ -18,8 +18,12 @@ angular.module('angularLetusgoApp')
         }
         this.getTotalMoney = function(cart){
             var sum = 0;
-            _.forEach(cart.cartItems,function(cartitem){
-                sum += cartitem.product.price * cartitem.count;
+            _.forEach(cart.cartItems,function(cartitem,index){
+                if(cartitem.count <= 0){
+                    cart.cartItems.splice(index,1);
+                }else{
+                    sum += cartitem.product.price * cartitem.count;
+                }
             });
             return sum;
         };

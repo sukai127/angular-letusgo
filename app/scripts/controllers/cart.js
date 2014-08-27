@@ -10,6 +10,7 @@ angular.module('angularLetusgoApp')
             return CartService.getSubtotal(cartitem);
         };
         $scope.updateCount = function(){
+
             $scope.$parent.cart.len = CartService.getTotalCount($scope.$parent.cart);
             $scope.totalMoney = CartService.getTotalMoney($scope.$parent.cart);
             CartService.add($scope.$parent.cart);
