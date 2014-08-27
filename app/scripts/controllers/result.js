@@ -9,10 +9,13 @@
  */
 angular.module('angularLetusgoApp')
   .controller('ResultCtrl', function ($scope,CartService) {
-    $scope.cartItems = CartService.create($scope.$parent.cart).cartItems;
-    $scope.clearData = function(){
-        Util.storage.removeStorageItem('cart');
-        $scope.$parent.cart = null;
-        $scope.$parent.totalCount = 0;
+    $scope.cartItems = $scope.$parent.cart.cartItems;
+    $scope.getSubtotal = function(cartitem){
+        return CartService.getSubtotal(cartitem);
     };
+    $scope.clearData = function() {
+        CartService.remove();
+        $scope.$parent.cart = {};
+        $scope.$parent.cart.len = 0;
+    }
   });

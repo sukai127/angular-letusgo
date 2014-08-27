@@ -5,38 +5,14 @@
 angular
     .module('angularLetusgoApp')
     .controller('IndexCtrl',function($scope,CartService){
-        $scope.cart = Util.storage.getStorageItem('cart') || CartService.create(null);
+        $scope.cart = CartService.get();
 
-        $scope.totalCount = $scope.cart.len;
         $scope.addCount = function(){
-            $scope.cart = Util.storage.getStorageItem('cart') || CartService.create(null);
+            $scope.cart = CartService.get();
             $scope.cart.len++;
-            $scope.totalCount++;
-            Util.storage.getStorageItem('cart',$scope.cart);
+            CartService.add($scope.cart);
         };
-        $scope.getTotalCount = function(){
-            var sum = 0;
-            _.forEach($scope.cart.cartItems,function(cartitem){
-                sum += cartitem.count;
-            });
-            return sum;
-        };
-        $scope.getSubtotal = function(cartitem){
-            return cartitem.product.price * cartitem.count;
-        };
-        $scope.getTotalMoney = function(){
-            var sum = 0;
-            _.forEach($scope.cart.cartItems,function(cartitem){
-                sum += $scope.getSubtotal(cartitem);
-            });
-            return sum;
-        };
-
-        $scope.changeCount = function(){
-            $scope.cart = Util.storage.getStorageItem('cart') || CartService.create(null);
-            $scope.cart.len++;
-            Util.storage.getStorageItem('cart',$scope.cart);
-        };
+        $scope.totalMoney = CartService.getTotalMoney($scope.cart);
 
         $scope.active_index = true;
         $scope.active_list = false;
