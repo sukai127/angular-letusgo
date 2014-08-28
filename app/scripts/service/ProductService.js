@@ -1,8 +1,5 @@
 angular.module('angularLetusgoApp')
     .service('ProductService',function(CartItemService,localStorageService,CartService){
-        this.create = function(name,unit,category,price){
-            return {name : name, unit : unit, category : category, price : price};
-        };
         this.loadAllProducts = function(){
             return [
                 {name : 'Instant_noodles', unit : 'bag', category : 'grocery', price : 1},
