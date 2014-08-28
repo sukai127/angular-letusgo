@@ -1,5 +1,5 @@
 angular.module('angularLetusgoApp')
-    .service('ProductService',function(CartItemService,localStorageService){
+    .service('ProductService',function(CartItemService,localStorageService,CartService){
         this.create = function(name,unit,category,price){
             return {name : name, unit : unit, category : category, price : price};
         };
@@ -13,7 +13,7 @@ angular.module('angularLetusgoApp')
             ];
         };
         this.add2Cart = function(cart,product){
-            var isOk = function (cart,product){
+            var isOk = function (){
                 var flag = true;
                 _.forEach(cart.cartItems,function(item){
                     if(product.name == item.product.name){
@@ -23,9 +23,10 @@ angular.module('angularLetusgoApp')
                 });
                 return flag;
             };
-            if(isOk(cart,product)){
+            if(isOk()){
                 cart.cartItems.push(CartItemService.create(product,1));
             }
+            cart.len = CartService.getTotalCount(cart);
             localStorageService.add('cart',cart);
         };
     });

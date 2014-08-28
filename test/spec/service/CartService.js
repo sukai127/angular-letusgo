@@ -1,6 +1,6 @@
 'use strict';
 
-describe('Service: CartService', function () {
+xdescribe('Service: CartService', function () {
 
   var localStorageService,service,cart;
   beforeEach(function(){
@@ -27,6 +27,12 @@ describe('Service: CartService', function () {
           len : 8
       }
 
+  });
+
+  it('should create() work', function () {
+    var result = service.create();
+    expect(result.cartItems.length).toBe(0);
+    expect(result.len).toBe(0);
   });
 
   it('should get() work', function () {
