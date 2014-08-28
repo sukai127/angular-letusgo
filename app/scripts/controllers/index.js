@@ -12,7 +12,6 @@ angular
             $scope.cart.len++;
             CartService.add($scope.cart);
         };
-        //$scope.totalMoney = CartService.getTotalMoney($scope.cart);
 
         $scope.active_index = true;
         $scope.active_list = false;
