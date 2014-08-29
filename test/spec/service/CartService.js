@@ -44,9 +44,9 @@ describe('Service: CartService', function () {
   });
 
   it('should set() work',function(){
-      spyOn(localStorageService,'add');
+      spyOn(localStorageService,'set');
       service.add({});
-      expect(localStorageService.add).toHaveBeenCalledWith('cart',{});
+      expect(localStorageService.set).toHaveBeenCalledWith('cart',{});
   });
 
   it('should the total money equal 49',function(){

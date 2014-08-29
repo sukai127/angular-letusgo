@@ -2,5 +2,5 @@
 
 angular.module('angularLetusgoApp')
   .controller('MainCtrl', function ($scope) {
-       $scope.$parent.highLight('active_index');
+    $scope.$emit('parent_highLight_active_index');
   });

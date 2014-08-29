@@ -10,7 +10,7 @@ angular.module('angularLetusgoApp')
             return localStorageService.get('cart') || this.create();
         }
         this.add = function(cart){
-            localStorageService.add('cart',cart);
+            localStorageService.set('cart',cart);
         }
         this.getTotalMoney = function(cart){
             var sum = 0;
