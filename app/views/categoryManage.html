@@ -1,0 +1,46 @@
+<section>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h1>CategoryManage</h1>
+    </div>
+    <div class="panel-body" id="category_panel">
+      <div class="row form-group">
+        <div class="col-md-9 text-center">
+          <div class="input-group">
+            <input type="text" class="form-control" ng-model="name">
+            <div class="input-group-btn">
+              <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="bootom"
+                      title="add a category!" ng-click="add()">
+                <span class="glyphicon glyphicon-plus"></span>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3 text-center">
+          <div class="input-group">
+            <span class="input-group-addon"><span class="glyphicon glyphicon-search"></span></span>
+            <input type="text" class="form-control" ng-model="query">
+          </div>
+        </div>
+      </div>
+      <div class='row text-center form-group'>
+        <div class='col-xs-4 h2'>category_ID</div>
+        <div class='col-xs-4 h2'>category_Name</div>
+        <div class='col-xs-4 h2'>operate</div>
+      </div>
+      <div ng-repeat="category in categories | filter:query">
+        <div class='row text-center'>
+          <div class='col-xs-4 h4'>{{category.id}}</div>
+          <div class='col-xs-4 h4'>
+            <input type="text" class="form-control" ng-model="category.name">
+          </div>
+          <div class='col-xs-4 '>
+            <a href='#/categoryManage'>
+              <span class='glyphicon glyphicon-remove text-danger' ng-click="remove($index)"></span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

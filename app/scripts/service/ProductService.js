@@ -1,13 +1,17 @@
+'use strict';
+
 angular.module('angularLetusgoApp')
     .service('ProductService',function(CartItemService,localStorageService,CartService){
         this.loadAllProducts = function(){
-            return [
-                {name : 'Instant_noodles', unit : 'bag', category : 'grocery', price : 1},
-                {name : 'apple', unit : 'kg', category : 'grocery', price : 2.5},
-                {name : 'coca_cola', unit : 'bottle', category : 'grocery', price : 0.5},
-                {name : 'kettle', unit : 'piece', category : 'device', price : 43.5},
-                {name : 'fan', unit : 'piece', category : 'device', price : 30}
+            var products = [
+              {name : 'Instant_noodles', unit : 'bag', category : '1', price : 1},
+              {name : 'apple', unit : 'kg', category : '1', price : 2.5},
+              {name : 'coca_cola', unit : 'bottle', category : '1', price : 0.5},
+              {name : 'kettle', unit : 'piece', category : '2', price : 43.5},
+              {name : 'fan', unit : 'piece', category : '2', price : 30}
             ];
+            var temp = localStorageService.get('products');
+            return temp ? temp : (localStorageService.add('products',products),products);
         };
         this.add2Cart = function(cart,product){
             var isOk = function (){

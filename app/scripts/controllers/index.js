@@ -1,7 +1,5 @@
 'use strict';
-/**
- * Created by sukai on 14-8-20.
- */
+
 angular
     .module('angularLetusgoApp')
     .controller('IndexCtrl',function($scope,CartService){
