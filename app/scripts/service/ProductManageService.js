@@ -1,22 +1,18 @@
 'use strict';
 angular.module('angularLetusgoApp')
-    .service('CategoryManageService',function(localStorageService){
-        this.loadAllCategories = function(){
-            var categories = [
-              {id : 1, name: 'grocery'},
-              {id : 2, name: 'device'}
-            ];
-            var temp = localStorageService.get('categories');
-            return temp ? temp : (localStorageService.add('categories',categories),categories);
-        };
-        this.add = function(categories){
-          localStorageService.add('categories',categories);
-          return categories;
-        };
-        this.getCategoryNameById = function(id){
-          return _.find(this.loadAllCategories(),function(category){
-            console.log(category.id + ".................."+ id);
-            return category.id == id;
-          }).name;
-        };
+    .service('ProductManageService',function(localStorageService){
+      this.loadAllProducts = function(){
+        var products = [
+          {name : 'Instant_noodles', unit : 'bag', category : '1', price : 1},
+          {name : 'apple', unit : 'kg', category : '1', price : 2.5},
+          {name : 'coca_cola', unit : 'bottle', category : '1', price : 0.5},
+          {name : 'kettle', unit : 'piece', category : '2', price : 43.5},
+          {name : 'fan', unit : 'piece', category : '2', price : 30}
+        ];
+        var temp = localStorageService.get('products');
+        return temp ? temp : (localStorageService.add('products',products),products);
+      };
+      this.add = function(products){
+          localStorageService.add('products',products);
+      };
     });

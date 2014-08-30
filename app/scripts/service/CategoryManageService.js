@@ -15,7 +15,6 @@ angular.module('angularLetusgoApp')
         };
         this.getCategoryNameById = function(id){
           return _.find(this.loadAllCategories(),function(category){
-            console.log(category.id + ".................."+ id);
             return category.id == id;
           }).name;
         };

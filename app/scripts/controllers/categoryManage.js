@@ -5,11 +5,12 @@ angular.module('angularLetusgoApp')
       $scope.categories = CategoryManageService.loadAllCategories();
       var id = parseInt($scope.categories[$scope.categories.length-1].id);
       $scope.add = function(){
+        if(!$scope.name){return;}
         var category = {};
         category.id = ++id;
         category.name = $scope.name;
         $scope.categories.push(category);
-        $scope.name = '';
+        $('.mymodal').modal('hide');
       };
       $scope.remove = function(index){
         $scope.categories.splice(index,1);

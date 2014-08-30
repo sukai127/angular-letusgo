@@ -2,7 +2,7 @@
 
 describe('Controller: ListCtrl', function () {
 
-  var createController,$controller,cart,cartService,productService,$scope,products;
+  var createController,$controller,cart,cartService,productService,$scope,products,categoryManageService;
 
   beforeEach(function(){
     module('angularLetusgoApp');
@@ -10,6 +10,7 @@ describe('Controller: ListCtrl', function () {
       $scope = $injector.get('$rootScope').$new();
       $controller = $injector.get('$controller');
       cartService = $injector.get('CartService');
+      categoryManageService = $injector.get('CategoryManageService');
       productService = $injector.get('ProductService');
     });
 
@@ -17,25 +18,26 @@ describe('Controller: ListCtrl', function () {
       return $controller('ListCtrl', {
         $scope: $scope,
         CartService: cartService,
+        CategoryManageService: categoryManageService,
         ProductService: productService
       });
     }
      products = [
-      {name : 'Instant_noodles', unit : 'bag', category : 'grocery', price : 1},
-      {name : 'apple', unit : 'kg', category : 'grocery', price : 2.5}
+      {name : 'Instant_noodles', unit : 'bag', category : '1', price : 1},
+      {name : 'apple', unit : 'kg', category : '1', price : 2.5}
       ];
     cart = {
       cartItems: [
         {
-          product: {name : 'Instant_noodles', unit : 'bag', category : 'grocery', price : 1},
+          product: {name : 'Instant_noodles', unit : 'bag', category : '1', price : 1},
           count : 4
         },
         {
-          product: {name : 'coca_cola', unit : 'bottle', category : 'grocery', price : 0.5},
+          product: {name : 'coca_cola', unit : 'bottle', category : '1', price : 0.5},
           count : 3
         },
         {
-          product: {name : 'kettle', unit : 'piece', category : 'device', price : 43.5},
+          product: {name : 'kettle', unit : 'piece', category : '2', price : 43.5},
           count : 1
         }
       ],
@@ -59,5 +61,11 @@ describe('Controller: ListCtrl', function () {
       $scope.add2Cart(products[0]);
       expect($scope.$emit).toHaveBeenCalled();
       expect($scope.cart.cartItems.length).toBe(3);
+  });
+  it('should getCategoryName work', function () {
+    spyOn(categoryManageService,'getCategoryNameById').andReturn('grocery');
+    createController();
+    var result = $scope.getCategoryName('1');
+    expect(result).toBe('grocery');
   });
 });

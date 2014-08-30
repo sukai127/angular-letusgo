@@ -19,36 +19,36 @@ angular
     'LocalStorageModule'
   ])
 
-    .config(function(localStorageServiceProvider){
-        localStorageServiceProvider.setPrefix('ls');
-    })
+  .config(function (localStorageServiceProvider) {
+    localStorageServiceProvider.setPrefix('ls');
+  })
   .config(function ($routeProvider) {
     $routeProvider
-    .when('/', {
+      .when('/', {
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
-    })
-    .when('/list', {
+      })
+      .when('/list', {
         templateUrl: 'views/list.html',
         controller: 'ListCtrl'
-    })
+      })
       .when('/categoryManage', {
         templateUrl: 'views/categoryManage.html',
         controller: 'CategoryManageCtrl'
       })
-    .when('/result', {
+      .when('/productManage', {
+        templateUrl: 'views/productManage.html',
+        controller: 'ProductManageCtrl'
+      })
+      .when('/result', {
         templateUrl: 'views/result.html',
         controller: 'ResultCtrl'
-    })
-    .when('/cart', {
+      })
+      .when('/cart', {
         templateUrl: 'views/cart.html',
         controller: 'CartCtrl'
-    })
-    .when('/about', {
-        templateUrl: 'views/about.html',
-        controller: 'AboutCtrl'
-    })
-    .otherwise({
+      })
+      .otherwise({
         redirectTo: '/'
-    });
+      });
   });
