@@ -15,7 +15,7 @@ angular
         $scope.active_cart = false;
 
         $scope.highLight = function(highLightItem){
-            var allItems = ['active_index','active_list','active_cart'];
+            var allItems = ['active_index','active_list','active_cart','active_category','active_product'];
             _.forEach(allItems,function(item){
                if(highLightItem === item){
                    eval('$scope.' + item + " = true");
@@ -33,6 +33,12 @@ angular
         });
         $scope.$on('parent_highLight_active_index',function(){
           $scope.highLight('active_index');
+        });
+        $scope.$on('parent_highLight_active_category',function(){
+          $scope.highLight('active_category');
+        });
+        $scope.$on('parent_highLight_active_product',function(){
+          $scope.highLight('active_product');
         });
         $scope.$on('parent_updateCount',function(event,cart){
           cart.len = CartService.getTotalCount(CartService.get());

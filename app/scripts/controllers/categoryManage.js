@@ -12,6 +12,7 @@ angular.module('angularLetusgoApp')
         $scope.categories.push(category);
         $('.mymodal').modal('hide');
       };
+      $scope.$emit('parent_highLight_active_category');
       $scope.remove = function(index){
         $scope.categories.splice(index,1);
       };

@@ -17,7 +17,7 @@ angular.module('angularLetusgoApp')
       $scope.products.splice(index,1);
       return false;
     };
-
+    $scope.$emit('parent_highLight_active_product');
     $scope.add = function(){
       var isOk = $scope.product.name && $scope.product.price && $scope.product.unit && $scope.product;
       if(!isOk){return;}
