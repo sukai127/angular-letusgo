@@ -3,11 +3,11 @@
 angular.module('angularLetusgoApp')
   .controller('CategoryManageCtrl', function ($scope,CategoryManageService) {
       $scope.categories = CategoryManageService.loadAllCategories();
-      var id = parseInt($scope.categories[$scope.categories.length-1].id);
+      $scope.id = parseInt($scope.categories[$scope.categories.length-1].id);
       $scope.add = function(){
         if(!$scope.name){return;}
         var category = {};
-        category.id = ++id;
+        category.id = ++$scope.id;
         category.name = $scope.name;
         $scope.categories.push(category);
         $('.mymodal').modal('hide');

@@ -1,6 +1,3 @@
-/**
- * Created by sukai on 14-8-28.
- */
 'use strict';
 
 describe('Service: ProductService', function () {
@@ -31,17 +28,17 @@ describe('Service: ProductService', function () {
       expect(localStorageService.add.calls.length).toBe(1);
       expect(result[1].name).toBe('device');
     });
-  it('should add() work', function () {
-    spyOn(localStorageService,'add');
-    categoryManageService.add(categories);
-    expect(localStorageService.add.calls.length).toBe(1);
-  });
-  it('should getCategoryNameById() work', function () {
-    spyOn(categoryManageService,'loadAllCategories').andReturn(categories);
-    var result = categoryManageService.getCategoryNameById(2);
-    expect(result).toBe('device');
-    result = categoryManageService.getCategoryNameById(3);
-    expect(result).toBe(3);
-  });
+    it('should add() work', function () {
+      spyOn(localStorageService,'add');
+      categoryManageService.add(categories);
+      expect(localStorageService.add.calls.length).toBe(1);
+    });
+    it('should getCategoryNameById() work', function () {
+      spyOn(categoryManageService,'loadAllCategories').andReturn(categories);
+      var result = categoryManageService.getCategoryNameById(2);
+      expect(result).toBe('device');
+      result = categoryManageService.getCategoryNameById(3);
+      expect(result).toBe(3);
+    });
 
 });

@@ -15,7 +15,7 @@
             <div class='row text-center form-group'>
                 <div class='col-xs-3 h4'>{{getCategoryName(item.category)}}</div>
                 <div class='col-xs-3 h4'>{{item.name}}</div>
-                <div class='col-xs-3 h4'>${{item.price.toFixed(2)}}/{{item.unit}}</div>
+                <div class='col-xs-3 h4'>${{item.price}}/{{item.unit}}</div>
                 <div class='col-xs-3'>
                     <a class='btn btn-warning' id={{item.name}} ng-click="add2Cart(item)">Add to the Cart</a>
                 </div>
