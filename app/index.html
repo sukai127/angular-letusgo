@@ -15,15 +15,44 @@
     <header>
         <div class="panel panel-title">
             <div class="panel-body">
-                <ul class="nav nav-pills">
-                    <li role="presentation" ng-class="{active : active_index}"><a href="#">Let's go Shop</a></li>
-                    <li role="presentation" ng-class="{active : active_list}"><a href="#/list">Product list</a></li>
-                    <li role="presentation" ng-class="{active : active_cart}">
+              <nav class="navbar navbar-default" role="navigation">
+                <div class="container-fluid">
+                  <!-- Brand and toggle get grouped for better mobile display -->
+                  <div class="navbar-header">
+                    <!--<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">-->
+                      <!--<span class="sr-only">Toggle navigation</span>-->
+                      <!--<span class="icon-bar"></span>-->
+                      <!--<span class="icon-bar"></span>-->
+                      <!--<span class="icon-bar"></span>-->
+                    <!--</button>-->
+                    <ul class="nav nav-pills navbar-right">
+                      <li role="presentation"><a class="navbar-brand" href="#">Let's go Shop</a></li>
+                    </ul>
+
+
+                  </div>
+                  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav nav-pills navbar-left">
+                      <li role="presentation" ng-class="{active : active_index}"><a href="#">Home</a></li>
+                      <li role="presentation" ng-class="{active : active_list}"><a href="#/list">Product list</a></li>
+                      <li class="dropdown">
+                        <a href="" class="dropdown-toggle" data-toggle="dropdown">Manage <span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                          <li role="presentation" ng-class="{active : active_category}"><a href="#/categoryManage">CategoryManage</a></li>
+                          <li role="presentation" ng-class="{active : active_product}"><a href="#/productManage">ProductManage</a></li>
+                        </ul>
+                      </li>
+                    </ul>
+
+                    <ul class="nav nav-pills navbar-right">
+                      <li role="presentation" ng-class="{active : active_cart}">
                         <a href="#/cart"><span class="glyphicon glyphicon-shopping-cart" id="cart">Cart({{cart.len || 0}})</span></a>
-                    </li>
-                  <li role="presentation" ng-class="{active : active_category}"><a href="#/categoryManage">CategoryManage</a></li>
-                  <li role="presentation" ng-class="{active : active_product}"><a href="#/productManage">ProductManage</a></li>
-                </ul>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </nav>
+
             </div>
         </div>
     </header>
