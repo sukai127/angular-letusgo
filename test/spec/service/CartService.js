@@ -29,12 +29,6 @@ describe('Service: CartService', function () {
 
   });
 
-  it('should create() work', function () {
-    var result = service.create();
-    expect(result.cartItems.length).toBe(0);
-    expect(result.len).toBe(0);
-  });
-
   it('should get() work', function () {
       spyOn(localStorageService,'get').andReturn(cart);
       var result = service.get();

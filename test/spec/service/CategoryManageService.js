@@ -2,7 +2,7 @@
 
 describe('Service: ProductService', function () {
 
-    var localStorageService,categoryManageService,categories;
+    var localStorageService,categoryManageService,categories,products;
     beforeEach(function(){
         module('angularLetusgoApp');
         inject(function ($injector) {
@@ -12,6 +12,10 @@ describe('Service: ProductService', function () {
         categories = [
           {id : 1, name: 'grocery'},
           {id : 2, name: 'device'}
+        ];
+        products = [
+          {name: 'Instant_noodles', unit: 'bag', category: '1', price: 1},
+          {name: 'apple', unit: 'kg', category: '1', price: 2.5},
         ];
     });
 
@@ -39,6 +43,13 @@ describe('Service: ProductService', function () {
       expect(result).toBe('device');
       result = categoryManageService.getCategoryNameById(3);
       expect(result).toBe(3);
+    });
+    it('should isIncludeProduct() work', function () {
+      spyOn(localStorageService,'get').andReturn(products);
+      var result = categoryManageService.isIncludeProduct(1);
+      expect(result).toBe(true);
+      result = categoryManageService.isIncludeProduct(3);
+      expect(result).toBe(false);
     });
 
 });

@@ -12,10 +12,13 @@ angular.module('angularLetusgoApp')
         $scope.categories.push(category);
         $('.mymodal').modal('hide');
       };
-      $scope.$emit('parent_highLight_active_category');
+      $scope.$emit('parent_highLight_active','category');
       $scope.remove = function(index){
         $scope.categories.splice(index,1);
       };
+      $scope.couldDelete = function(id){
+        return !CategoryManageService.isIncludeProduct(id);
+      }
       $scope.$watch('categories',function(){
         CategoryManageService.add($scope.categories);
       },true);

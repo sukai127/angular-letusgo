@@ -4,11 +4,8 @@
  */
 angular.module('angularLetusgoApp')
     .service('CartService',function(localStorageService){
-        this.create = function(){
-           return {cartItems:[],len:0};
-        };
         this.get = function(){
-            return localStorageService.get('cart') || this.create();
+            return localStorageService.get('cart') || {cartItems:[],len:0};
         }
         this.add = function(cart){
             localStorageService.set('cart',cart);

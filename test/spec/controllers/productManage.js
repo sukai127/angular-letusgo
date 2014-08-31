@@ -28,6 +28,7 @@ describe('Controller: ListCtrl', function () {
       {id : 1, name: 'grocery'},
       {id : 2, name: 'device'}
     ];
+    spyOn($scope,'$emit');
     spyOn(productManageService,'loadAllProducts').andReturn(products);
   });
 
@@ -38,6 +39,7 @@ describe('Controller: ListCtrl', function () {
     expect($scope.categories.length).toBe(2);
     expect($scope.categories[0].id).toBe(1);
     expect($scope.products[1].name).toBe('apple');
+    expect($scope.$emit.calls.length).toBe(1);
   });
 
   it('should remove() work', function () {

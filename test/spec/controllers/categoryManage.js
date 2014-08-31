@@ -2,7 +2,7 @@
 
 describe('Controller: ListCtrl', function () {
 
-  var createController,$controller,$scope,categories,categoryManageService;
+  var createController,$controller,$scope,categories,categoryManageService,products;
 
   beforeEach(function(){
     module('angularLetusgoApp');
@@ -22,6 +22,11 @@ describe('Controller: ListCtrl', function () {
       {id : 1, name: 'grocery'},
       {id : 2, name: 'device'}
     ];
+    products = [
+      {name: 'Instant_noodles', unit: 'bag', category: '1', price: 1},
+      {name: 'apple', unit: 'kg', category: '1', price: 2.5},
+    ];
+    spyOn($scope,'$emit');
   });
 
   it('should init success', function () {
@@ -30,6 +35,7 @@ describe('Controller: ListCtrl', function () {
     expect($scope.id).toBe(2);
     expect($scope.categories.length).toBe(2);
     expect($scope.categories[1].id).toBe(2);
+    expect($scope.$emit.calls.length).toBe(1);
   });
 
   it('should add() work', function () {
@@ -43,5 +49,10 @@ describe('Controller: ListCtrl', function () {
     $scope.remove(1);
     expect($scope.categories.length).toBe(1);
   });
-
+  it('should couldDelete() work', function () {
+    spyOn(categoryManageService,'isIncludeProduct').andReturn(true);
+    createController();
+    var result = $scope.couldDelete(1);
+    expect(result).toBe(false);
+  });
 });

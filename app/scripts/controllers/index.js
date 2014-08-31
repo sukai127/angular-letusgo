@@ -25,20 +25,8 @@ angular
             });
         }
 
-        $scope.$on('parent_highLight_active_cart',function(){
-          $scope.highLight('active_cart');
-        });
-        $scope.$on('parent_highLight_active_list',function(){
-          $scope.highLight('active_list');
-        });
-        $scope.$on('parent_highLight_active_index',function(){
-          $scope.highLight('active_index');
-        });
-        $scope.$on('parent_highLight_active_category',function(){
-          $scope.highLight('active_category');
-        });
-        $scope.$on('parent_highLight_active_product',function(){
-          $scope.highLight('active_product');
+        $scope.$on('parent_highLight_active',function(event,active){
+          $scope.highLight('active_'+active);
         });
         $scope.$on('parent_updateCount',function(event,cart){
           cart.len = CartService.getTotalCount(CartService.get());

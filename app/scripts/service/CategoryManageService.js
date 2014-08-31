@@ -19,4 +19,11 @@ angular.module('angularLetusgoApp')
           });
           return temp ? temp.name: id;
         };
+        this.isIncludeProduct = function(id){
+          var products = localStorageService.get('products');
+          var result = _.find(products,function(product){
+            return product.category == id;
+          });
+          return result ? true : false;
+        };
     });

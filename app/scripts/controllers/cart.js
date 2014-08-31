@@ -3,7 +3,7 @@
 angular.module('angularLetusgoApp')
     .controller('CartCtrl', function ($scope,CartService) {
         $scope.cart = CartService.get();
-        $scope.$emit('parent_highLight_active_cart');
+        $scope.$emit('parent_highLight_active','cart');
         $scope.flag = $scope.cart.cartItems.length == 0;
         $scope.totalMoney = CartService.getTotalMoney($scope.cart);
         $scope.getSubtotal = function(cartitem){

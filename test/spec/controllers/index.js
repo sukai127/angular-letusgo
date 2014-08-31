@@ -63,11 +63,13 @@ describe('Controller: IndexCtrl', function () {
 
   it('should on_parent_highLight_active_* event trigger', function () {
     createController();
-    $rootScope.$broadcast('parent_highLight_active_list');
+    $rootScope.$broadcast('parent_highLight_active','list');
     expect($scope.active_list).toEqual(true);
     expect($scope.active_cart).toEqual(false);
-    $rootScope.$broadcast('parent_highLight_active_cart');
+    $rootScope.$broadcast('parent_highLight_active','cart');
     expect($scope.active_cart).toEqual(true);
+    $rootScope.$broadcast('parent_highLight_active','index');
+    expect($scope.active_index).toEqual(true);
   });
 
   it('should on_parent_clear event trigger', function () {
