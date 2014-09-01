@@ -53,6 +53,9 @@ describe('Controller: ListCtrl', function () {
     $scope.product = {};
     $scope.add();
     expect($scope.products.length).toBe(2);
+    $scope.product = {name : 'Instant_noodles', unit : 'bag', category : '1', price : 1};
+    $scope.add();
+    expect($scope.products.length).toBe(3);
   });
 
   it('should $watch() work', function () {

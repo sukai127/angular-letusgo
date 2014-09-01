@@ -22,6 +22,6 @@ angular.module('angularLetusgoApp')
       var isOk = $scope.product.name && $scope.product.price && $scope.product.unit && $scope.product;
       if(!isOk){return;}
       $scope.products.push($scope.product);
-      $('.mymodal').modal('hide');
+      //$('.mymodal').modal('hide');
     };
   });

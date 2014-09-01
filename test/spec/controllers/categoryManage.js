@@ -42,6 +42,10 @@ describe('Controller: ListCtrl', function () {
     createController();
     $scope.add();
     expect($scope.categories.length).toBe(2);
+    $scope.name = 'test';
+    $scope.$apply();
+    $scope.add();
+    expect($scope.categories.length).toBe(3);
   });
 
   it('should $watch() work', function () {
