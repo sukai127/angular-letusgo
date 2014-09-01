@@ -32,10 +32,10 @@ describe('Service: ProductService', function () {
       expect(localStorageService.add.calls.length).toBe(1);
       expect(result[3].name).toBe('kettle');
     });
-  it('should add() work', function () {
-    spyOn(localStorageService,'add');
-    productManageService.add(products);
-    expect(localStorageService.add.calls.length).toBe(1);
-  });
+    it('should add() work', function () {
+      spyOn(localStorageService,'add');
+      productManageService.add(products);
+      expect(localStorageService.add.calls.length).toBe(1);
+    });
 
 });

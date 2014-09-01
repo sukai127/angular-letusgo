@@ -48,11 +48,19 @@ describe('Controller: ListCtrl', function () {
     expect($scope.products.length).toBe(1);
   });
 
-  it('should add() work', function () {
+  it('should add() work when product equal {}', function () {
     createController();
     $scope.product = {};
     $scope.add();
     expect($scope.products.length).toBe(2);
+  });
+
+  it('should $watch() work', function () {
+    spyOn(productManageService,'add');
+    createController();
+    $scope.products = [];
+    $scope.$apply();
+    expect(productManageService.add.calls.length).toBe(1);
   });
 
   it('should getCategoryName work', function () {

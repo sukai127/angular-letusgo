@@ -44,6 +44,13 @@ describe('Controller: ListCtrl', function () {
     expect($scope.categories.length).toBe(2);
   });
 
+  it('should $watch() work', function () {
+    spyOn(categoryManageService,'add');
+    createController();
+    $scope.categories = [];
+    $scope.$apply();
+    expect(categoryManageService.add.calls.length).toBe(1);
+  });
   it('should remove() work', function () {
     createController();
     $scope.remove(1);
