@@ -22,7 +22,7 @@ angular.module('angularLetusgoApp')
 
       $scope.couldDelete = function(id){
         return !CategoryManageService.isIncludeProduct(id);
-      }
+      };
 
       $scope.$watch('categories',function(){
         CategoryManageService.add($scope.categories);

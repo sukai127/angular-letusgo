@@ -2,8 +2,18 @@
 
 angular.module('angularLetusgoApp')
     .service('ProductService',function(CartItemService,localStorageService,CartService){
-        this.loadAllProducts = function(){
-            return localStorageService.get('products') || [];
+        this.loadAllProducts = function(pageNow){
+            var products = localStorageService.get('products') || [];
+            if(pageNow){
+              return products.slice((pageNow-1)*2,pageNow*2);
+            }else{
+              return products;
+            }
+        };
+        this.getPageTotal = function(){
+          var totalCount = this.loadAllProducts(null).length;
+          var pageCount = totalCount % 2 == 0 ?  parseInt(totalCount / 2) : parseInt(totalCount / 2) + 1;
+          return _.range(1,pageCount + 1);
         };
         this.add2Cart = function(cart,product){
             var isOk = function (){

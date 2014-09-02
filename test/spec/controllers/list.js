@@ -53,9 +53,11 @@ describe('Controller: ListCtrl', function () {
     createController();
     expect($scope.cart.cartItems.length).toBe(3);
     expect($scope.products.length).toBe(2);
+    expect($scope.pageTotal.length).toBe(1);
     expect($scope.products[1].name).toBe('apple');
     expect($scope.$emit).toHaveBeenCalled();
   });
+
   it('should add2Cart work', function () {
       createController();
       $scope.add2Cart(products[0]);
