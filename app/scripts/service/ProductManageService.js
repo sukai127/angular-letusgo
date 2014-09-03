@@ -15,6 +15,15 @@ angular.module('angularLetusgoApp')
     this.add = function (products) {
       localStorageService.add('products', products);
     };
+    this.updateProduct = function (product) {
+      var products = localStorageService.get('products');
+      _.forEach(products,function(item,index){
+        if(item.name === product.name){
+          products[index] = product;
+        }
+      });
+      this.add(products);
+    };
     this.getProductByName = function(name){
       var products = localStorageService.get('products');
       return _.find(products,{name: name}) || {};
