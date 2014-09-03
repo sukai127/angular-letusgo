@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('angularLetusgoApp')
-  .controller('ProductManageCtrl', function ($scope,ProductManageService) {
+  .controller('ProductManageCtrl', function ($scope,ProductManageService,CategoryManageService) {
 
     $scope.products = ProductManageService.loadAllProducts();
     $scope.$watch('products',function(){
@@ -11,6 +11,9 @@ angular.module('angularLetusgoApp')
     $scope.remove = function(index){
       $scope.products.splice(index,1);
       return false;
+    };
+    $scope.getCategoryName = function(id){
+      return CategoryManageService.getCategoryNameById(id);
     };
     $scope.$emit('parent_highLight_active','product');
     $scope.add = function(){
