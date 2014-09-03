@@ -3,7 +3,6 @@
 angular.module('angularLetusgoApp')
   .controller('UpdateProductCtrl', function ($scope,CategoryManageService,ProductManageService,$routeParams) {
 
-    $scope.products = ProductManageService.loadAllProducts();
     $scope.product = ProductManageService.getProductByName($routeParams.name);
     $scope.categories = CategoryManageService.loadAllCategories();
 

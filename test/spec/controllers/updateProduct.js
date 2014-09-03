@@ -14,7 +14,7 @@ describe('Controller: ListCtrl', function () {
     });
 
     createController = function(){
-      return $controller('ProductManageCtrl', {
+      return $controller('UpdateProductCtrl', {
         $scope: $scope,
         CategoryManageService: categoryManageService,
         ProductManageService: productManageService
@@ -24,39 +24,31 @@ describe('Controller: ListCtrl', function () {
         {name : 'Instant_noodles', unit : 'bag', category : '1', price : 1},
         {name : 'apple', unit : 'kg', category : '1', price : 2.5}
       ];
+    categories = [
+      {id : 1, name: 'grocery'},
+      {id : 2, name: 'device'}
+    ];
     spyOn($scope,'$emit');
-    spyOn(productManageService,'loadAllProducts').andReturn(products);
   });
 
   it('should init success', function () {
+    spyOn(categoryManageService,'loadAllCategories').andReturn(categories);
     createController();
-    expect($scope.products.length).toBe(2);
-    expect($scope.products[1].name).toBe('apple');
+    expect($scope.categories.length).toBe(2);
+    expect($scope.categories[0].id).toBe(1);
     expect($scope.$emit.calls.length).toBe(1);
   });
-
-  it('should remove() work', function () {
+  it('should getCategoryName work', function () {
+    spyOn(categoryManageService,'getCategoryNameById').andReturn('grocery');
     createController();
-    $scope.remove(1);
-    expect($scope.products.length).toBe(1);
+    var result = $scope.getCategoryName('1');
+    expect(result).toBe('grocery');
   });
-
-  it('should add() work when product equal {}', function () {
+  it('should updateProduct work', function () {
+    var product = {name : 'Instant_noodles', unit : 'bag', category : '1', price : 1};
+    spyOn(productManageService,'updateProduct');
     createController();
-    $scope.product = {};
-    $scope.add();
-    expect($scope.products.length).toBe(2);
-    $scope.product = {name : 'Instant_noodles', unit : 'bag', category : '1', price : 1};
-    $scope.add();
-    expect($scope.products.length).toBe(3);
+    $scope.updateProduct(product);
+    expect(productManageService.updateProduct.calls.length).toBe(1);
   });
-
-  it('should $watch() work', function () {
-    spyOn(productManageService,'add');
-    createController();
-    $scope.products = [];
-    $scope.$apply();
-    expect(productManageService.add.calls.length).toBe(1);
-  });
-
 });

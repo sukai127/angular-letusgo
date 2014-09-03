@@ -1,14 +1,9 @@
 'use strict';
 
 angular.module('angularLetusgoApp')
-  .controller('ProductManageCtrl', function ($scope,CategoryManageService,ProductManageService) {
+  .controller('ProductManageCtrl', function ($scope,ProductManageService) {
 
     $scope.products = ProductManageService.loadAllProducts();
-    $scope.categories = CategoryManageService.loadAllCategories();
-
-    $scope.getCategoryName = function(id){
-      return CategoryManageService.getCategoryNameById(id);
-    };
     $scope.$watch('products',function(){
       ProductManageService.add($scope.products);
     },true);
