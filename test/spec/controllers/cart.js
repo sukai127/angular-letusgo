@@ -57,9 +57,10 @@ describe('Controller: CartCtrl', function () {
       spyOn(cartService,'getTotalMoney');
       spyOn($scope,'$emit');
     });
-    it('should updateCount() work', function () {
+    it('should #watch() work', function () {
       createController();
-      $scope.updateCount();
+      $scope.cart = {cartItems: [], len: 0};
+      $scope.$apply();
       expect(cartService.add.calls.length).toBe(1);
       expect(cartService.getTotalMoney.calls.length).toBe(2);
       expect($scope.$emit).toHaveBeenCalled();
@@ -70,9 +71,6 @@ describe('Controller: CartCtrl', function () {
       $scope.deleteItem();
       var currentCount = $scope.cart.cartItems.length;
       expect(count-1).toBe(currentCount);
-      expect(cartService.add.calls.length).toBe(1);
-      expect(cartService.getTotalMoney.calls.length).toBe(2);
-      expect($scope.$emit).toHaveBeenCalled();
     });
 
   });
