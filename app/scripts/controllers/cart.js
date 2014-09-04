@@ -14,6 +14,9 @@ angular.module('angularLetusgoApp')
             return false;
         };
         $scope.$watch('cart',function(){
+          _.remove($scope.cart.cartItems,function(cartitem){
+            return cartitem.count < 1;
+          });
           $scope.totalMoney = CartService.getTotalMoney($scope.cart);
           CartService.add($scope.cart);
           $scope.$emit('parent_updateCount',$scope.cart);
