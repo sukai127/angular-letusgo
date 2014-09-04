@@ -4,6 +4,7 @@ angular.module('angularLetusgoApp')
   .controller('ProductManageCtrl', function ($scope,ProductManageService,CategoryManageService) {
 
     $scope.products = ProductManageService.loadAllProducts();
+    $scope.categories = CategoryManageService.loadAllCategories();
     $scope.$watch('products',function(){
       ProductManageService.add($scope.products);
     },true);
