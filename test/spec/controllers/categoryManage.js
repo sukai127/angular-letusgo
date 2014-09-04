@@ -24,7 +24,7 @@ describe('Controller: ListCtrl', function () {
     ];
     products = [
       {name: 'Instant_noodles', unit: 'bag', category: '1', price: 1},
-      {name: 'apple', unit: 'kg', category: '1', price: 2.5},
+      {name: 'apple', unit: 'kg', category: '1', price: 2.5}
     ];
     spyOn($scope,'$emit');
   });
@@ -32,20 +32,16 @@ describe('Controller: ListCtrl', function () {
   it('should init success', function () {
     spyOn(categoryManageService,'loadAllCategories').andReturn(categories);
     createController();
-    expect($scope.id).toBe(2);
     expect($scope.categories.length).toBe(2);
     expect($scope.categories[1].id).toBe(2);
     expect($scope.$emit.calls.length).toBe(1);
   });
 
   it('should add() work', function () {
+    spyOn(categoryManageService,'insert');
     createController();
     $scope.add();
-    expect($scope.categories.length).toBe(2);
-    $scope.name = 'test';
-    $scope.$apply();
-    $scope.add();
-    expect($scope.categories.length).toBe(3);
+    expect(categoryManageService.insert.calls.length).toBe(1);
   });
 
   it('should $watch() work', function () {

@@ -4,7 +4,6 @@ angular.module('angularLetusgoApp')
   .controller('CategoryManageCtrl', function ($scope,CategoryManageService) {
 
       $scope.categories = CategoryManageService.loadAllCategories();
-      $scope.id = parseInt($scope.categories[$scope.categories.length-1].id);
       $scope.add = function(){
         $scope.categories = CategoryManageService.insert($scope.name);
       };

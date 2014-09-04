@@ -15,7 +15,7 @@ describe('Service: ProductService', function () {
         ];
         products = [
           {name: 'Instant_noodles', unit: 'bag', category: '1', price: 1},
-          {name: 'apple', unit: 'kg', category: '1', price: 2.5},
+          {name: 'apple', unit: 'kg', category: '1', price: 2.5}
         ];
     });
 
@@ -36,6 +36,16 @@ describe('Service: ProductService', function () {
       spyOn(localStorageService,'add');
       categoryManageService.add(categories);
       expect(localStorageService.add.calls.length).toBe(1);
+    });
+
+    it('should insert() work', function () {
+      spyOn(categoryManageService,'loadAllCategories').andReturn(categories);
+      var result = categoryManageService.insert('device');
+      expect(result.length).toBe(2);
+      var result = categoryManageService.insert('');
+      expect(result.length).toBe(2);
+      var result = categoryManageService.insert('node');
+      expect(result.length).toBe(3);
     });
     it('should getCategoryNameById() work', function () {
       spyOn(categoryManageService,'loadAllCategories').andReturn(categories);
