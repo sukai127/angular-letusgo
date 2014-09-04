@@ -6,12 +6,7 @@ angular.module('angularLetusgoApp')
       $scope.categories = CategoryManageService.loadAllCategories();
       $scope.id = parseInt($scope.categories[$scope.categories.length-1].id);
       $scope.add = function(){
-        if(!$scope.name){return;}
-        var category = {};
-        category.id = ++$scope.id;
-        category.name = $scope.name;
-        $scope.categories.push(category);
-        //$('.mymodal').modal('hide');
+        $scope.categories = CategoryManageService.insert($scope.name);
       };
 
       $scope.$emit('parent_highLight_active','category');

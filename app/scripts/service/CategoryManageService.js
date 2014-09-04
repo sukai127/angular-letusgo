@@ -13,6 +13,16 @@ angular.module('angularLetusgoApp')
           localStorageService.add('categories',categories);
           return categories;
         };
+        this.insert = function(name){
+          var categories = this.loadAllCategories();
+          var isExist = _.some(categories,{name : name});
+          if(name || !isExist){
+            var id = parseInt(categories[categories.length-1].id) + 1;
+            var category = {id: id,name : name};
+            categories.push(category);
+          }
+          return categories;
+        };
         this.getCategoryNameById = function(id){
           var temp = _.find(this.loadAllCategories(),function(category){
             return category.id == id;
