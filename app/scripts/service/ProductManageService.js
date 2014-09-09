@@ -31,7 +31,7 @@ angular.module('angularLetusgoApp')
     this.updateProduct = function (product) {
       var products = localStorageService.get('products');
       _.forEach(products,function(item,index){
-        if(item.name === product.name){
+        if(item.id === product.id){
           products[index] = product;
         }
       });
