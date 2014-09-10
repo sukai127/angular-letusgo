@@ -62,4 +62,12 @@ describe('Controller: ListCtrl', function () {
     var result = $scope.couldDelete(1);
     expect(result).toBe(false);
   });
+
+  it('should updateCategory() work', function () {
+    var category = {id : 2, name: 'device'};
+    spyOn(categoryManageService,'updateCategory');
+    createController();
+    $scope.updateCategory(category);
+    expect(categoryManageService.updateCategory.calls.length).toBe(1);
+  });
 });
