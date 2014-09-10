@@ -50,6 +50,6 @@ angular.module('angularLetusgoApp')
             }
           });
           this.add(categories);
-          return categories;
+          return category;
         };
     });

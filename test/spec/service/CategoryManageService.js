@@ -54,6 +54,20 @@ describe('Service: ProductService', function () {
       result = categoryManageService.getCategoryNameById(3);
       expect(result).toBe(3);
     });
+
+    it('should getCategoryById() work', function () {
+      spyOn(categoryManageService,'loadAllCategories').andReturn(categories);
+      var result = categoryManageService.getCategoryById(2);
+      expect(result.name).toBe('device');
+    });
+
+    it('should updateCategory() work', function () {
+      spyOn(localStorageService, 'get').andReturn(categories);
+      var category = {id : 1, name: 'grocery123'};
+      var result = categoryManageService.updateCategory(category);
+      expect(result.name).toBe('grocery123');
+    });
+
     it('should isIncludeProduct() work', function () {
       spyOn(localStorageService,'get').andReturn(products);
       var result = categoryManageService.isIncludeProduct(1);
