@@ -40,6 +40,10 @@ angular
         templateUrl: 'views/productManage.html',
         controller: 'ProductManageCtrl'
       })
+      .when('/updateCategory/:id', {
+        templateUrl: 'views/updateCategory.html',
+        controller: 'CategoryManageCtrl'
+      })
       .when('/updateProduct/:name', {
         templateUrl: 'views/updateProduct.html',
         controller: 'UpdateProductCtrl'

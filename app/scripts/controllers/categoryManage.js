@@ -1,9 +1,10 @@
 'use strict';
 
 angular.module('angularLetusgoApp')
-  .controller('CategoryManageCtrl', function ($scope,CategoryManageService) {
+  .controller('CategoryManageCtrl', function ($scope,CategoryManageService,$routeParams) {
 
       $scope.categories = CategoryManageService.loadAllCategories();
+      $scope.category = CategoryManageService.getCategoryById($routeParams.id);
       $scope.add = function(){
         $scope.categories = CategoryManageService.insert($scope.name);
       };
