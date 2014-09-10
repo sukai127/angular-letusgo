@@ -23,10 +23,11 @@
       <div ng-repeat="category in categories | filter:query">
         <div class='row text-center'>
           <div class='col-xs-4 h4'>{{category.id}}</div>
-          <div class='col-xs-4'>
-            <input type="text" class="form-control" ng-model="category.name">
-          </div>
+          <div class='col-xs-4'>{{category.name}}</div>
           <div class='col-xs-4 h5'>
+            <a href="#/updateCategory/{{category.id}}">
+              <span class='glyphicon glyphicon-pencil text-justify'></span>
+            </a>
             <a href='#/categoryManage' ng-show={{couldDelete(category.id)}}>
               <span class='glyphicon glyphicon-remove text-danger' ng-click="remove($index)"></span>
             </a>
