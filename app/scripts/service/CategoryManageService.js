@@ -42,4 +42,14 @@ angular.module('angularLetusgoApp')
               return category.id == id;
             });
         };
+        this.updateCategory = function(category){
+          var categories = localStorageService.get('categories');
+          _.forEach(categories,function(item,index){
+            if(item.id === category.id){
+              categories[index] = category;
+            }
+          });
+          this.add(categories);
+          return categories;
+        };
     });

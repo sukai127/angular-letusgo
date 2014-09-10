@@ -22,4 +22,8 @@ angular.module('angularLetusgoApp')
       $scope.$watch('categories',function(){
         CategoryManageService.add($scope.categories);
       },true);
+
+      $scope.updateCategory = function(){
+        CategoryManageService.updateCategory($scope.category);
+      };
   });
