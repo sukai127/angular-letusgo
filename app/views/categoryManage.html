@@ -11,13 +11,13 @@
             <input type="text" class="form-control" ng-model="query" placeholder="search">
           </div>
         </div>
-        <div class="col-md-2 text-center">
+        <div class="col-md-3 text-center">
           <a href=".mymodal" data-toggle="modal" ><h4>Add a category</h4></a>
         </div>
       </div>
       <div class='row text-center form-group'>
-        <div class='col-xs-4 h2'>category_ID</div>
-        <div class='col-xs-4 h2'>category_Name</div>
+        <div class='col-xs-4 h2'>id</div>
+        <div class='col-xs-4 h2'>name</div>
         <div class='col-xs-4 h2'>operate</div>
       </div>
       <div ng-repeat="category in categories | filter:query">
