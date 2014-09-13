@@ -19,8 +19,8 @@ angular.module('angularLetusgoApp')
     this.insert = function(product){
       var products = this.loadAllProducts();
       var isExist = _.some(products,{name : name});
-      var isOk = product.name && product.price && product.unit && product && !isExist;
-      if(isOk){
+      var isAllFullIn = product.name && product.price && product.unit && product && !isExist;
+      if(isAllFullIn){
         var id = parseInt(products[products.length-1].id) + 1;
         product.id = id;
         products.push(product);
