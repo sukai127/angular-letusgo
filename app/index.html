@@ -26,19 +26,19 @@
                   </div>
                   <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav nav-pills navbar-left">
-                      <li role="presentation" ng-class="{active : active_index}"><a href="#">Home</a></li>
-                      <li role="presentation" ng-class="{active : active_list}"><a href="#/list/1">Product list</a></li>
+                      <li role="presentation" ng-class="{active : indexActive}"><a href="#">Home</a></li>
+                      <li role="presentation" ng-class="{active : listActive}"><a href="#/list/1">Product list</a></li>
                       <li class="dropdown">
                         <a href="" class="dropdown-toggle" data-toggle="dropdown">Manage <span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
-                          <li role="presentation" ng-class="{active : active_category}"><a href="#/categoryManage">CategoryManage</a></li>
-                          <li role="presentation" ng-class="{active : active_product}"><a href="#/productManage">ProductManage</a></li>
+                          <li role="presentation" ng-class="{active : categoryActive}"><a href="#/categoryManage">CategoryManage</a></li>
+                          <li role="presentation" ng-class="{active : productActive}"><a href="#/productManage">ProductManage</a></li>
                         </ul>
                       </li>
                     </ul>
 
                     <ul class="nav nav-pills navbar-right">
-                      <li role="presentation" ng-class="{active : active_cart}">
+                      <li role="presentation" ng-class="{active : cartActive}">
                         <a href="#/cart"><span class="glyphicon glyphicon-shopping-cart" id="cart">Cart({{cart.len || 0}})</span></a>
                       </li>
                     </ul>

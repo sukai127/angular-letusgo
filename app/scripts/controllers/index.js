@@ -10,12 +10,14 @@ angular
           $scope.cart.len++;
           CartService.add($scope.cart);
         });
-        $scope.active_index = true;
-        $scope.active_list = false;
-        $scope.active_cart = false;
+        $scope.indexActive = true;
+        $scope.listActive = false;
+        $scope.cartActive = false;
+        $scope.categoryActive = false;
+        $scope.productActive = false;
 
         $scope.highLight = function(highLightItem){
-            var allItems = ['active_index','active_list','active_cart','active_category','active_product'];
+            var allItems = ['indexActive','listActive','cartActive','categoryActive','productActive'];
             _.forEach(allItems,function(item){
                if(highLightItem === item){
                    eval('$scope.' + item + " = true");
@@ -25,8 +27,8 @@ angular
             });
         }
 
-        $scope.$on('parent_highLight_active',function(event,active){
-          $scope.highLight('active_'+active);
+        $scope.$on('highLightActive',function(event,active){
+          $scope.highLight(active + 'Active');
         });
         $scope.$on('parent_updateCount',function(event,cart){
           cart.len = CartService.getTotalCount(CartService.get());
