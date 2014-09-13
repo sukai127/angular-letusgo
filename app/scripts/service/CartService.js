@@ -17,13 +17,14 @@ angular.module('angularLetusgoApp')
             });
             return sum;
         };
+
         this.getTotalCount = function(cart){
-            var sum = 0;
-            _.forEach(cart.cartItems,function(cartitem){
-                sum += cartitem.count;
-            });
-            return sum;
+
+          return _.reduce(_.pluck(cart.cartItems, 'count'), function (count1, count2) {
+            return count1 + count2;
+          });
         };
+
         this.getSubtotal = function(cartitem){
             return (cartitem.product.price * cartitem.count).toFixed(2);
         };
