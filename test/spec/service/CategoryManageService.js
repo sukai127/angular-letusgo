@@ -47,13 +47,6 @@ describe('Service: ProductService', function () {
       var result = categoryManageService.insert('node');
       expect(result.length).toBe(3);
     });
-    it('should getCategoryNameById() work', function () {
-      spyOn(categoryManageService,'loadAllCategories').andReturn(categories);
-      var result = categoryManageService.getCategoryNameById(2);
-      expect(result).toBe('device');
-      result = categoryManageService.getCategoryNameById(3);
-      expect(result).toBe(3);
-    });
 
     it('should getCategoryById() work', function () {
       spyOn(categoryManageService,'loadAllCategories').andReturn(categories);
