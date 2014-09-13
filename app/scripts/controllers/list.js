@@ -5,7 +5,7 @@ angular.module('angularLetusgoApp')
     $scope.pageNow = parseInt($routeParams.pageNow);
     $scope.products = ProductService.loadAllProducts($scope.pageNow);
     $scope.cart = CartService.get();
-    $scope.$emit('parent_highLight_active','list');
+    $scope.$emit('highLightActive','list');
     $scope.add2Cart = function(product){
         $scope.$emit('parent_addCount');
         ProductService.add2Cart($scope.cart,product);

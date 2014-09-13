@@ -9,7 +9,7 @@ angular.module('angularLetusgoApp')
         $scope.categories = CategoryManageService.insert($scope.name);
       };
 
-      $scope.$emit('parent_highLight_active','category');
+      $scope.$emit('highLightActive','category');
 
       $scope.remove = function(index){
         $scope.categories.splice(index,1);
