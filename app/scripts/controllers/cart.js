@@ -4,7 +4,7 @@ angular.module('angularLetusgoApp')
     .controller('CartCtrl', function ($scope,CartService) {
         $scope.cart = CartService.get();
         $scope.$emit('highLightActive','cart');
-        $scope.flag = $scope.cart.cartItems.length == 0;
+        $scope.isCartEmpty = $scope.cart.cartItems.length == 0;
         $scope.totalMoney = CartService.getTotalMoney($scope.cart);
         $scope.getSubtotal = function(cartitem){
             return CartService.getSubtotal(cartitem);
