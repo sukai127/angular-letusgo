@@ -23,12 +23,7 @@ angular.module('angularLetusgoApp')
           }
           return categories;
         };
-        this.getCategoryNameById = function(id){
-          var temp = _.find(this.loadAllCategories(),function(category){
-            return category.id == id;
-          });
-          return temp ? temp.name: id;
-        };
+
         this.isIncludeProduct = function(id){
           var products = localStorageService.get('products');
           var result = _.find(products,function(product){
