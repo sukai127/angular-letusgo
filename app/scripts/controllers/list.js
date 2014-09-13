@@ -7,7 +7,7 @@ angular.module('angularLetusgoApp')
     $scope.cart = CartService.get();
     $scope.$emit('highLightActive','list');
     $scope.add2Cart = function(product){
-        $scope.$emit('parent_addCount');
+        $scope.$emit('addCount');
         ProductService.add2Cart($scope.cart,product);
     };
     $scope.getCategoryName = function(id){

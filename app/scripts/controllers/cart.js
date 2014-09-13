@@ -19,7 +19,7 @@ angular.module('angularLetusgoApp')
           });
           $scope.totalMoney = CartService.getTotalMoney($scope.cart);
           CartService.add($scope.cart);
-          $scope.$emit('UpdateCount',$scope.cart);
+          $scope.$emit('updateCount',$scope.cart);
         },true);
     });
 

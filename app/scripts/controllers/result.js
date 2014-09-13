@@ -8,6 +8,6 @@ angular.module('angularLetusgoApp')
     };
     $scope.clearData = function() {
         CartService.remove();
-        $scope.$emit('parent_clear');
+        $scope.$emit('clear');
     }
   });

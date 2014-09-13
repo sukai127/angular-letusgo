@@ -5,7 +5,7 @@ angular
     .controller('IndexCtrl',function($scope,CartService){
         $scope.cart = CartService.get();
 
-        $scope.$on('parent_addCount',function(){
+        $scope.$on('addCount',function(){
           $scope.cart = CartService.get();
           $scope.cart.len++;
           CartService.add($scope.cart);
@@ -30,12 +30,12 @@ angular
         $scope.$on('highLightActive',function(event,active){
           $scope.highLight(active + 'Active');
         });
-        $scope.$on('parent_updateCount',function(event,cart){
+        $scope.$on('updateCount',function(event,cart){
           cart.len = CartService.getTotalCount(CartService.get());
           $scope.cart.len = cart.len;
           CartService.add(cart);
         });
-        $scope.$on('parent_clear',function(){
+        $scope.$on('clear',function(){
           $scope.cart = {cartItems: [],len:0};
         });
     })
