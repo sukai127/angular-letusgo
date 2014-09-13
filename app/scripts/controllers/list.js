@@ -11,7 +11,7 @@ angular.module('angularLetusgoApp')
         ProductService.add2Cart($scope.cart,product);
     };
     $scope.getCategoryName = function(id){
-      return CategoryManageService.getCategoryNameById(id);
+      return CategoryManageService.getCategoryById(id).name;
     };
 
     $scope.pageTotal = ProductService.getPageTotal();

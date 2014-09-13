@@ -14,7 +14,7 @@ angular.module('angularLetusgoApp')
       return false;
     };
     $scope.getCategoryName = function(id){
-      return CategoryManageService.getCategoryNameById(id);
+      return CategoryManageService.getCategoryById(id).name;
     };
     $scope.$emit('highLightActive','product');
     $scope.add = function(){
