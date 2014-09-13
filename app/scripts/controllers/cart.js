@@ -17,6 +17,7 @@ angular.module('angularLetusgoApp')
           _.remove($scope.cart.cartItems,function(cartitem){
             return cartitem.count < 1;
           });
+
           $scope.totalMoney = CartService.getTotalMoney($scope.cart);
           CartService.add($scope.cart);
           $scope.$emit('updateCount',$scope.cart);
