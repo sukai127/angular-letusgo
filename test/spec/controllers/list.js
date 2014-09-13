@@ -65,7 +65,7 @@ describe('Controller: ListCtrl', function () {
       expect($scope.cart.cartItems.length).toBe(3);
   });
   it('should getCategoryName work', function () {
-    spyOn(categoryManageService,'getCategoryNameById').andReturn('grocery');
+    spyOn(categoryManageService,'getCategoryById').andReturn({id:1,name: 'grocery'});
     createController();
     var result = $scope.getCategoryName('1');
     expect(result).toBe('grocery');

@@ -46,35 +46,35 @@ describe('Controller: IndexCtrl', function () {
     spyOn(cartService,'get').andReturn(cart);
     spyOn(cartService,'add');
     createController();
-    $rootScope.$broadcast('parent_addCount');
+    $rootScope.$broadcast('addCount');
     expect($scope.cart.len).toBe(9);
-    expect($scope.active_index).toEqual(true);
-    expect($scope.active_list).toEqual(false);
+    expect($scope.indexActive).toEqual(true);
+    expect($scope.listActive).toEqual(false);
     expect(cartService.add).toHaveBeenCalled();
   });
   it('should highLight trigger', function () {
     createController();
-    $scope.highLight('active_list');
-    expect($scope.active_index).toEqual(false);
-    expect($scope.active_list).toEqual(true);
-    $scope.highLight('active_cart');
-    expect($scope.active_cart).toEqual(true);
+    $scope.highLight('listActive');
+    expect($scope.indexActive).toEqual(false);
+    expect($scope.listActive).toEqual(true);
+    $scope.highLight('cartActive');
+    expect($scope.cartActive).toEqual(true);
   });
 
   it('should on_parent_highLight_active_* event trigger', function () {
     createController();
-    $rootScope.$broadcast('parent_highLight_active','list');
-    expect($scope.active_list).toEqual(true);
-    expect($scope.active_cart).toEqual(false);
-    $rootScope.$broadcast('parent_highLight_active','cart');
-    expect($scope.active_cart).toEqual(true);
-    $rootScope.$broadcast('parent_highLight_active','index');
-    expect($scope.active_index).toEqual(true);
+    $rootScope.$broadcast('highLightActive','list');
+    expect($scope.listActive).toEqual(true);
+    expect($scope.cartActive).toEqual(false);
+    $rootScope.$broadcast('highLightActive','cart');
+    expect($scope.cartActive).toEqual(true);
+    $rootScope.$broadcast('highLightActive','index');
+    expect($scope.indexActive).toEqual(true);
   });
 
   it('should on_parent_clear event trigger', function () {
     createController();
-    $rootScope.$broadcast('parent_clear');
+    $rootScope.$broadcast('clear');
     expect($scope.cart.len).toEqual(0);
     expect($scope.cart.cartItems.length).toEqual(0);
   });
@@ -82,7 +82,7 @@ describe('Controller: IndexCtrl', function () {
   it('should on_parent_updateCount event trigger', function () {
     spyOn(cartService,'getTotalCount').andReturn(8);
     createController();
-    $rootScope.$broadcast('parent_updateCount',cart);
+    $rootScope.$broadcast('updateCount',cart);
     expect(cartService.getTotalCount.calls.length).toEqual(1);
     expect($scope.cart.len).toEqual(8);
   });

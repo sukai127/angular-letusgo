@@ -41,7 +41,7 @@ describe('Controller: CartCtrl', function () {
     spyOn(cartService,'get').andReturn(cart);
     createController();
     expect($scope.cart.cartItems.length).toBe(3);
-    expect($scope.flag).toEqual(false);
+    expect($scope.isCartEmpty).toEqual(false);
     expect($scope.totalMoney).toBe(49);
   });
   it('should getSubtotal() work', function () {
