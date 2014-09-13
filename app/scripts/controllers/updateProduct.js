@@ -7,7 +7,7 @@ angular.module('angularLetusgoApp')
     $scope.categories = CategoryManageService.loadAllCategories();
 
     $scope.getCategoryName = function(id){
-      return CategoryManageService.getCategoryNameById(id);
+      return CategoryManageService.getCategoryById(id).name;
     };
     $scope.updateProduct = function(){
       ProductManageService.updateProduct($scope.product);
