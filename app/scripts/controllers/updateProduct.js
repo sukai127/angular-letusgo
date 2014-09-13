@@ -13,5 +13,5 @@ angular.module('angularLetusgoApp')
       ProductManageService.updateProduct($scope.product);
     };
 
-    $scope.$emit('parent_highLight_active','product');
+    $scope.$emit('highLightActive','product');
   });

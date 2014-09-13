@@ -16,7 +16,7 @@ angular.module('angularLetusgoApp')
     $scope.getCategoryName = function(id){
       return CategoryManageService.getCategoryNameById(id);
     };
-    $scope.$emit('parent_highLight_active','product');
+    $scope.$emit('highLightActive','product');
     $scope.add = function(){
       $scope.products = ProductManageService.insert($scope.product);
     };
