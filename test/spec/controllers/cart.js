@@ -68,6 +68,7 @@ describe('Controller: CartCtrl', function () {
     it('should deleteItem() work', function () {
       createController();
       var count = $scope.cart.cartItems.length;
+      count = count < 1 ? 1: count;
       $scope.deleteItem();
       var currentCount = $scope.cart.cartItems.length;
       expect(count-1).toBe(currentCount);
